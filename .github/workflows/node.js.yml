@@ -3,7 +3,7 @@ name: Node.js CI
 on:
   push:
     branches:
-      - main  # Changed branch name from 'master' to 'main'
+      - main 
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '14.x'  # Use a version that matches the supported React version
+          - '14.x'  
 
     steps:
       - name: Checkout code
@@ -24,6 +24,6 @@ jobs:
           cache: 'npm'
 
       - run: |
-          npm ci --legacy-peer-deps  # Ensure dependencies are installed
-          npm install react-scripts  # Install react-scripts if missing
-          npm run build  # Run the build command
+          npm ci --legacy-peer-deps  
+          npm install react-scripts  
+          npm run build  
