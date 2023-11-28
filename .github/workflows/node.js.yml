@@ -23,6 +23,17 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npm ci --force
+        npm install --force
         npm run build --if-present
         npm run build
+
+    - name: Display npm versions
+      run: |
+        npm --version
+        node --version
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: path/to/artifact
