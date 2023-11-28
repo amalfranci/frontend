@@ -3,27 +3,27 @@ name: Node.js CI
 on:
   push:
     branches:
-      - master
+      - main  # Changed branch name from 'master' to 'main'
 
 jobs:
   build:
     runs-on: self-hosted
-
     strategy:
       matrix:
         node-version:
-          - '20.x'
-          
+          - '14.x'  # Use a version that matches the supported React version
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
       - run: |
-    
-          npm run build
+          npm ci --legacy-peer-deps  # Ensure dependencies are installed
+          npm install react-scripts  # Install react-scripts if missing
+          npm run build  # Run the build command
